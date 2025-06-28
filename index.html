@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Paper Money Sk8 Site</title>
+  <script src="https://unpkg.com/webamp"></script>
   <style>
     body {
       background-image: url("assets/tile.gif");
@@ -58,13 +59,10 @@
     <img src="assets/logo.png" alt="Paper Money Logo" width="300">
   </div>
 
-  <h1>SUCK BUTT OR DIE</h1>
+  <h1>Paper</h1>
 
   <div class="player">
-    <audio controls>
-      <source src="assets/3. Posty.wav" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+    <div id="winamp-container"></div>
   </div>
 
   <div class="gif-row">
@@ -78,6 +76,27 @@
     <p><em>Last updated: June 27, 1999</em></p>
     <p><img src="assets/skater.gif" alt="Under Construction"></p>
   </div>
+
+  <script>
+  new Webamp({
+    initialTracks: [
+      {
+        metaData: {
+          artist: "Paper Money",
+          title: "Posty"
+        },
+        url: "assets/3. Posty.wav",
+        duration: 240
+      }
+    ],
+    availableSkins: [
+      {
+        url: "https://github.com/captbaritone/webamp/blob/master/packages/webamp/assets/skins/base-2.91.wsz",
+        name: "Winamp Classic"
+      }
+    ]
+  }).renderWhenReady(document.getElementById("winamp-container"));
+    </script>
 
 </body>
 </html>
