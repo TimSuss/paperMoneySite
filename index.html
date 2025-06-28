@@ -1,76 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Paper Money Sk8 Site</title>
+  <meta charset="UTF-8">
+  <title>Webamp Test</title>
   <script src="https://unpkg.com/webamp"></script>
-  <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: #ff0000;
-      text-shadow: 2px 2px #000000;
-      margin-top: 0;
-    }
-
-    .logo {
-      margin-top: 20px;
-    }
-
-    marquee {
-      color: yellow;
-      background-color: black;
-      font-size: 20px;
-      padding: 10px;
-    }
-
-    .player {
-      margin: 40px auto;
-    }
-
-    .gif-row {
-      margin-top: 40px;
-    }
-
-    .gif-row img {
-      margin: 0 10px;
-    }
-
-    .footer {
-      font-size: 14px;
-      color: white;
-      margin-top: 50px;
-    }
-  </style>
 </head>
-<body>
-
-  <marquee behavior="scroll" direction="left">💀 ttub kcuS 💀</marquee>
-
-  <div class="logo">
-    <img src="assets/logo.png" alt="Paper Money Logo" width="300">
-  </div>
-
-  <h1>Paper</h1>
-
-  <div class="player">
-    <div id="winamp-container"></div>
-  </div>
-
-  <div class="gif-row">
-    <img src="assets/tlc.gif" alt="tlc">
-  </div>
-
-  <div class="footer">
-    <p><em>Last updated: June 27, 1999</em></p>
-  </div>
+<body style="background:black; text-align:center; padding-top:40px;">
+  <h1 style="color:lime;">Testing Winamp</h1>
+  <div id="winamp"></div>
 
   <script>
     new Webamp({
@@ -78,17 +15,15 @@
         {
           metaData: {
             artist: "Paper Money",
-            title: "Posty"
+            title: "Posty",
           },
-          url: "assets/3. Posty.wav",
-          duration: 240
+          url: "assets/3. Posty.mp3", // use .mp3 if possible
         }
       ],
       skin: {
         url: "https://cdn.jsdelivr.net/gh/captbaritone/webamp@master/skins/base-2.91.wsz"
       }
-    }).renderWhenReady(document.getElementById("winamp-container"));
+    }).renderWhenReady(document.getElementById("winamp"));
   </script>
-
 </body>
 </html>
