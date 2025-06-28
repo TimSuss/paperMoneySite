@@ -1,29 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Webamp Test</title>
-  <script src="https://unpkg.com/webamp"></script>
-</head>
-<body style="background:black; text-align:center; padding-top:40px;">
-  <h1 style="color:lime;">Testing Winamp take 5</h1>
-  <div id="winamp"></div>
+  <meta charset="utf-8" />
+  <title>Paper Money Sk8 Site</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-  <script>
-    new Webamp({
+    h1 {
+      font-size: 48px;
+      color: #ff0000;
+      text-shadow: 2px 2px #000000;
+      margin-top: 0;
+    }
+
+    .logo {
+      margin-top: 20px;
+    }
+
+    marquee {
+      color: yellow;
+      background-color: black;
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    .gif-row {
+      margin-top: 40px;
+    }
+
+    .gif-row img {
+      margin: 0 10px;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: white;
+      margin-top: 50px;
+    }
+
+    #app {
+      height: 500px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <marquee behavior="scroll" direction="left">💀 ttub kcuS 💀</marquee>
+
+  <div class="logo">
+    <img src="assets/logo.png" alt="Paper Money Logo" width="300" />
+  </div>
+
+  <h1>Paper</h1>
+
+  <div id="app">
+    <!-- Webamp will render here -->
+  </div>
+
+  <div class="gif-row">
+    <img src="assets/tlc.gif" alt="tlc" />
+  </div>
+
+  <div class="footer">
+    <p><em>Last updated: June 27, 1999</em></p>
+  </div>
+
+  <script type="module">
+    import Webamp from "https://unpkg.com/webamp@^2";
+    const webamp = new Webamp({
       initialTracks: [
         {
           metaData: {
             artist: "Paper Money",
             title: "Posty",
           },
-          url: "assets/3. Posty.mp3", // use .mp3 if possible
+          url: "assets/3. Posty.mp3", // must be served with correct CORS headers or local
         }
-      ],
-      skin: {
-        url: "https://raw.githubusercontent.com/captbaritone/webamp/master/skins/base-2.91.wsz"
-      }
-    }).renderWhenReady(document.getElementById("winamp"));
+      ]
+    });
+
+    webamp.renderWhenReady(document.getElementById("app"));
   </script>
+
 </body>
 </html>
