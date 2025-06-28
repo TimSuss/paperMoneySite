@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(to right, #ffe29f, #ffa99f, #ff719a, #c471f5);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+audio {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 1rem;
+}
