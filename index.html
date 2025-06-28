@@ -8,9 +8,12 @@
       background-color: black;
       color: #00ff00;
       font-family: "Comic Sans MS", cursive, sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
+    }
+
+    .centered {
+      text-align: center;
     }
 
     h1 {
@@ -53,28 +56,33 @@
 </head>
 <body>
 
-  <marquee behavior="scroll" direction="left">💀 ttub kcuS 💀</marquee>
+  <div class="centered">
+    <marquee behavior="scroll" direction="left">💀 ttub kcuS 💀</marquee>
 
-  <div class="logo">
-    <img src="assets/logo.png" alt="Paper Money Logo" width="300" />
+    <div class="logo">
+      <img src="assets/logo.png" alt="Paper Money Logo" width="300" />
+    </div>
+
+    <h1>Paper</h1>
   </div>
-
-  <h1>Paper</h1>
 
   <div id="app">
-    <!-- Webamp will render here -->
+    <!-- Webamp player will load here -->
   </div>
 
-  <div class="gif-row">
-    <img src="assets/tlc.gif" alt="tlc" />
-  </div>
+  <div class="centered">
+    <div class="gif-row">
+      <img src="assets/tlc.gif" alt="tlc" />
+    </div>
 
-  <div class="footer">
-    <p><em>Last updated: June 27, 1999</em></p>
+    <div class="footer">
+      <p><em>Last updated: June 27, 1999</em></p>
+    </div>
   </div>
 
   <script type="module">
     import Webamp from "https://unpkg.com/webamp@^2";
+
     const webamp = new Webamp({
       initialTracks: [
         {
