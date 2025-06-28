@@ -5,8 +5,7 @@
   <script src="https://unpkg.com/webamp"></script>
   <style>
     body {
-      background-image: url("assets/tile.gif");
-      background-repeat: repeat;
+      background-color: black;
       color: #00ff00;
       font-family: "Comic Sans MS", cursive, sans-serif;
       text-align: center;
@@ -67,36 +66,29 @@
 
   <div class="gif-row">
     <img src="assets/tlc.gif" alt="tlc">
-    <img src="assets/tile.gif" alt="tile">
-    <img src="assets/bandi.gif" alt="bandi">
   </div>
 
   <div class="footer">
-    <p>Counter: <img src="assets/counter.gif" alt="Hit Counter"></p>
     <p><em>Last updated: June 27, 1999</em></p>
-    <p><img src="assets/skater.gif" alt="Under Construction"></p>
   </div>
 
   <script>
-  new Webamp({
-    initialTracks: [
-      {
-        metaData: {
-          artist: "Paper Money",
-          title: "Posty"
-        },
-        url: "assets/3. Posty.wav",
-        duration: 240
+    new Webamp({
+      initialTracks: [
+        {
+          metaData: {
+            artist: "Paper Money",
+            title: "Posty"
+          },
+          url: "assets/3. Posty.wav",
+          duration: 240
+        }
+      ],
+      skin: {
+        url: "https://cdn.jsdelivr.net/gh/captbaritone/webamp@master/skins/base-2.91.wsz"
       }
-    ],
-    availableSkins: [
-      {
-        url: "https://github.com/captbaritone/webamp/blob/master/packages/webamp/assets/skins/base-2.91.wsz",
-        name: "Winamp Classic"
-      }
-    ]
-  }).renderWhenReady(document.getElementById("winamp-container"));
-    </script>
+    }).renderWhenReady(document.getElementById("winamp-container"));
+  </script>
 
 </body>
 </html>
