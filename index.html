@@ -1,113 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Paper Money</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>paper money</title>
   <style>
     body {
-      background-color: black;
-      color: #00ff00;
-      font-family: "Comic Sans MS", cursive, sans-serif;
       margin: 0;
-      padding: 0;
-    }
-
-    .centered {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
-
-    h1 {
-      font-size: 48px;
-      color: #ff0000;
-      text-shadow: 2px 2px #000000;
-      margin-top: 0;
-    }
-
-    .logo {
-      margin-top: 20px;
-    }
-
-    marquee {
-      color: yellow;
-      background-color: black;
-      font-size: 20px;
-      padding: 10px;
-    }
-
-    .gif-row {
-      margin-top: 40px;
-    }
-
-    .gif-row img {
-      margin: 0 10px;
-      width: 200px;
+    img {
+      max-width: 80%;
       height: auto;
     }
-
-    .footer {
-      font-size: 14px;
-      color: white;
-      margin-top: 50px;
+    nav {
+      margin-top: 2rem;
     }
-
-    #app {
-      height: 500px;
-      margin-top: 0px;
-      transform: scale(1.5); /* Adjust this scale factor */
-      transform-origin: top left;
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      color: #222;
+      text-transform: lowercase;
     }
   </style>
 </head>
 <body>
-
-  <div class="centered">
-    <marquee behavior="scroll" direction="left">💀 ttub kcuS 💀</marquee>
-
-    <div class="logo">
-      <img src="assets/logo.png" alt="Paper Money Logo" width="300" />
-    </div>
-  </div>
-
-  <div id="app">
-    <!-- Webamp player will load here -->
-  </div>
-
-  <div class="centered">
-    <div class="gif-row">
-      <img src="assets/tlc.gif" alt="tlc" />
-    </div>
-
-    <div class="footer">
-      <p><em>Last updated: June 27, 1999</em></p>
-    </div>
-  </div>
-
-  <script type="module">
-    import Webamp from "https://unpkg.com/webamp@^2";
-
-    const webamp = new Webamp({
-      initialTracks: [
-        {
-          metaData: { artist: "Paper Money", title: "Gold Coast Soul" },
-          url: "assets/1. Gold Coast Soul.wav"
-        },
-        {
-          metaData: { artist: "Paper Money", title: "How Do You Do It?" },
-          url: "assets/2. How Do You Do It.wav"
-        },
-        {
-          metaData: { artist: "Paper Money", title: "Posty" },
-          url: "assets/3. Posty.wav"
-        },
-        {
-          metaData: { artist: "Paper Money", title: "Pleasant Valley Way (BtB & FtK)" },
-          url: "assets/4. Pleasant Valley Way.wav"
-        }
-      ]
-    });
-
-    webamp.renderWhenReady(document.getElementById("app"));
-  </script>
-
+  <img src="assets/logo.png" alt="paper money logo" />
+  <nav>
+    <a href="music.html">music</a>
+    <a href="other.html">other</a>
+    <a href="live.html">live</a>
+    <a href="about.html">about</a>
+  </nav>
 </body>
 </html>

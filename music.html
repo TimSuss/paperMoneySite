@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>paper money – music</title>
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #app {
+        width: 100vw;
+        max-width: 420px;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import Webamp from "https://unpkg.com/webamp@^2";
+
+      const webamp = new Webamp({
+        initialTracks: [
+          {
+            metaData: { artist: "paper money", title: "Gold Coast Soul" },
+            url: "assets/Gold Coast Soul.wav"
+          },
+          {
+            metaData: { artist: "paper money", title: "How Do You Do It?" },
+            url: "assets/How Do You Do It.wav"
+          },
+          {
+            metaData: { artist: "paper money", title: "POSTY" },
+            url: "assets/Posty.wav"
+          },
+          {
+            metaData: { artist: "paper money", title: "Pleasant Valley Way (BtB & FtK)" },
+            url: "assets/Pleasant Valley Way.wav"
+          }
+        ]
+      });
+
+      webamp.renderWhenReady(document.getElementById("app"));
+    </script>
+  </body>
+</html>
