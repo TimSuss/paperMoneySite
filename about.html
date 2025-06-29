@@ -11,18 +11,37 @@
       color: #222;
       margin: 0;
       padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      height: 100vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-transform: lowercase;
+    }
+
+    nav {
+      margin-bottom: 1.5rem;
+    }
+
+    nav a {
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      color: #4b5c2b;
+      text-transform: lowercase;
+      font-size: 1.5rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .message {
-      font-size: 2rem;
+      font-size: 1.75rem;
+      line-height: 1.5;
       max-width: 800px;
-      line-height: 1.4;
+      margin: 0 auto;
     }
 
     .home-link {
@@ -35,17 +54,22 @@
       text-decoration: none;
       font-weight: bold;
     }
-
-    .home-link a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
+  <h1>about</h1>
+
+  <nav>
+    <a href="music.html">music</a>
+    <a href="contact.html">contact</a>
+    <a href="live.html">live</a>
+    <a href="about.html">about</a>
+  </nav>
+
   <div class="message">
-    Five dudes in a band that used to be called <strong>Someone Say Something</strong>,<br />
-    is now called <strong>Paper Money</strong>,<br />
-    and will soon be called <strong>???</strong>.<br />
+    Five dudes in a band that used to be called <strong>Someone Say Something</strong>,<br>
+    is now called <strong>Paper Money</strong>,<br>
+    and will soon be called <strong>???</strong>.<br>
     They will always be <em>above the rim</em>.
   </div>
 
