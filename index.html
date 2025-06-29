@@ -1,183 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>paper money – music</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>paper money</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #008080;
-      font-family: "Tahoma", sans-serif;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-    }
-
-    .desktop {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: calc(100% - 32px);
-      position: relative;
-    }
-
-    .icons {
+      background: #ffffff;
+      font-family: sans-serif;
+      color: #222;
       display: flex;
       flex-direction: column;
-      padding: 12px;
-      width: 90px;
-    }
-
-    .icon {
-      margin: 14px 0;
-      color: white;
-      text-align: center;
-      cursor: default;
-      user-select: none;
-      font-size: 14px;
-    }
-
-    .icon .emoji {
-      font-size: 36px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    #app {
-      position: absolute;
-      left: 57.5%; /* 50% + 15% offset */
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-    }
-
-    .taskbar {
-      height: 32px;
-      background: #c0c0c0;
-      border-top: 2px solid #fff;
-      border-bottom: 2px solid #404040;
-      display: flex;
       align-items: center;
-      padding: 0 6px;
-      position: absolute;
-      bottom: 0;
+    }
+
+    nav {
       width: 100%;
-      box-sizing: border-box;
+      text-align: center;
+      padding: 1rem 0 0.5rem;
     }
 
-    .start-button {
-      background: #c0c0c0;
-      border: 2px outset #fff;
-      font-size: 14px;
+    nav a {
+      margin: 0 1.5rem;
+      text-decoration: none;
       font-weight: bold;
-      padding: 2px 10px;
-      cursor: pointer;
+      color: #4b5c2b;
+      text-transform: lowercase;
+      font-size: 1.75rem;
     }
 
-    .start-button:hover {
-      background: #a0a0a0;
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    .taskbar-text {
-      margin-left: 12px;
-      font-size: 13px;
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #ccc;
+      margin-bottom: 1rem;
     }
 
-    /* MOBILE OVERRIDE */
-    @media (max-width: 768px) {
-      .desktop {
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        height: auto;
-        padding-bottom: 32px;
-      }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 2rem 2rem;
+    }
 
-      .icons {
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        padding: 1rem 0;
-      }
+    .footer {
+      font-family: 'Brush Script MT', cursive, serif;
+      font-size: 1.25rem;
+      color: #777;
+      margin-bottom: 0.75rem;
+    }
 
-      .icon {
-        margin: 0 1rem;
-        font-size: 13px;
-      }
-
-      .icon .emoji {
-        font-size: 32px;
-      }
-
-      #app {
-        position: static;
-        transform: none;
-        margin-top: 2rem;
-      }
-
-      .taskbar {
-        position: fixed;
-        bottom: 0;
-      }
+    .logo-container img {
+      width: 90%;
+      max-width: 600px;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <div class="desktop">
-    <div class="icons">
-      <div class="icon" ondblclick="openPage('live.html')">
-        <span class="emoji">🎤</span>
-        <span>Live</span>
-      </div>
-      <div class="icon" ondblclick="openPage('other.html')">
-        <span class="emoji">📁</span>
-        <span>Other</span>
-      </div>
-      <div class="icon" ondblclick="openPage('about.html')">
-        <span class="emoji">ℹ️</span>
-        <span>About</span>
-      </div>
-    </div>
+  <nav>
+    <a href="music.html">music</a>
+    <a href="contact.html">contact</a>
+    <a href="live.html">live</a>
+    <a href="about.html">about</a>
+  </nav>
 
-    <div id="app"></div>
+  <div class="divider"></div>
+
+  <div class="logo-container">
+    <div class="footer">Est. 2006 &amp; 2024</div>
+    <img src="assets/logo.png" alt="paper money logo" />
   </div>
-
-  <div class="taskbar">
-    <div class="start-button" onclick="location.href='index.html'">Start</div>
-    <div class="taskbar-text">paper money desktop</div>
-  </div>
-
-  <script type="module">
-    import Webamp from "https://unpkg.com/webamp@^2";
-
-    const webamp = new Webamp({
-      initialTracks: [
-        {
-          metaData: { artist: "paper money", title: "Gold Coast Soul" },
-          url: "assets/Gold Coast Soul.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "How Do You Do It?" },
-          url: "assets/How Do You Do It.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "POSTY" },
-          url: "assets/Posty.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "Pleasant Valley Way (BtB & FtK)" },
-          url: "assets/Pleasant Valley Way.wav"
-        }
-      ]
-    });
-
-    webamp.renderWhenReady(document.getElementById("app"));
-
-    function openPage(url) {
-      window.location.href = url;
-    }
-  </script>
 </body>
 </html>

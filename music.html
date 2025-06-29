@@ -8,11 +8,11 @@
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #008080; /* Win98 teal */
+      background: #008080;
       font-family: "Tahoma", sans-serif;
       overflow: hidden;
+      width: 100%;
+      height: 100%;
     }
 
     .desktop {
@@ -39,15 +39,16 @@
       font-size: 14px;
     }
 
-    .icon .emoji {
-      font-size: 36px;
+    .icon img {
+      width: 48px;
+      height: 48px;
       display: block;
-      margin-bottom: 4px;
+      margin: 0 auto 4px;
     }
 
     #app {
       position: absolute;
-      left: 50%;
+      left: 42.5%;
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
@@ -60,6 +61,7 @@
       border-bottom: 2px solid #404040;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 0 6px;
       position: absolute;
       bottom: 0;
@@ -74,31 +76,77 @@
       font-weight: bold;
       padding: 2px 10px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .start-button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
     }
 
     .start-button:hover {
       background: #a0a0a0;
     }
 
-    .taskbar-text {
-      margin-left: 12px;
+    .taskbar-clock {
       font-size: 13px;
+      background: #e0e0e0;
+      border: 2px inset #888;
+      padding: 2px 8px;
+    }
+
+    /* MOBILE OVERRIDE */
+    @media (max-width: 768px) {
+      .desktop {
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        height: auto;
+        padding-bottom: 60px;
+      }
+
+      #app {
+        position: static;
+        transform: none;
+        margin-top: 2rem;
+      }
+
+      .icons {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem 0;
+        gap: 2rem;
+      }
+
+      .icon {
+        margin: 0;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .icon img {
+        width: 40px;
+        height: 40px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="desktop">
     <div class="icons">
-      <div class="icon" ondblclick="openPage('live.html')">
-        <span class="emoji">🎤</span>
+      <div class="icon" id="live-icon">
+        <img src="assets/live.png" alt="Live" />
         <span>Live</span>
       </div>
-      <div class="icon" ondblclick="openPage('other.html')">
-        <span class="emoji">📁</span>
-        <span>Other</span>
+      <div class="icon" id="contact-icon">
+        <img src="assets/contact.png" alt="Contact" />
+        <span>Contact</span>
       </div>
-      <div class="icon" ondblclick="openPage('about.html')">
-        <span class="emoji">ℹ️</span>
+      <div class="icon" id="about-icon">
+        <img src="assets/about.png" alt="About" />
         <span>About</span>
       </div>
     </div>
@@ -107,8 +155,11 @@
   </div>
 
   <div class="taskbar">
-    <div class="start-button" onclick="location.href='index.html'">Start</div>
-    <div class="taskbar-text">paper money desktop</div>
+    <div class="start-button" onclick="location.href='index.html'">
+      <img src="assets/start-icon.png" alt="Start" />
+      Start
+    </div>
+    <div class="taskbar-clock" id="clock">11:30 AM</div>
   </div>
 
   <script type="module">
@@ -140,6 +191,41 @@
     function openPage(url) {
       window.location.href = url;
     }
+
+    function setupIconEvents() {
+      const isMobile = window.innerWidth <= 768;
+      const icons = [
+        { id: "live-icon", url: "live.html" },
+        { id: "contact-icon", url: "contact.html" },
+        { id: "about-icon", url: "about.html" }
+      ];
+
+      icons.forEach(({ id, url }) => {
+        const icon = document.getElementById(id);
+        if (!icon) return;
+
+        if (isMobile) {
+          icon.onclick = () => openPage(url);
+        } else {
+          icon.ondblclick = () => openPage(url);
+        }
+      });
+    }
+
+    function updateClock() {
+      const clock = document.getElementById("clock");
+      const now = new Date();
+      const fakeYear = 1999;
+      const options = { hour: "numeric", minute: "2-digit" };
+      const timeStr = now.toLocaleTimeString(undefined, options);
+      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${fakeYear}`;
+      clock.textContent = `${timeStr} ${dateStr}`;
+    }
+
+    setupIconEvents();
+    updateClock();
+    setInterval(updateClock, 1000);
+    window.addEventListener("resize", setupIconEvents);
   </script>
 </body>
 </html>
