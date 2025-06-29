@@ -10,21 +10,13 @@
       background: #ffffff;
       color: #222;
       margin: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 0;
       text-align: center;
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-transform: lowercase;
-    }
-
     nav {
-      margin-bottom: 1.5rem;
+      width: 100%;
+      padding: 1rem 0 0.5rem;
     }
 
     nav a {
@@ -38,6 +30,19 @@
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-transform: lowercase;
+      margin-bottom: 2rem;
     }
 
     .links a {
@@ -65,14 +70,16 @@
   </style>
 </head>
 <body>
-  <h1>contact</h1>
-
   <nav>
     <a href="music.html">music</a>
     <a href="contact.html">contact</a>
     <a href="live.html">live</a>
     <a href="about.html">about</a>
   </nav>
+
+  <div class="divider"></div>
+
+  <h1>contact</h1>
 
   <div class="links">
     <a href="https://www.instagram.com/papermoneymusic/" target="_blank">instagram</a>

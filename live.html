@@ -10,18 +10,13 @@
       background: #fdfdfd;
       color: #222;
       margin: 0;
-      padding: 2rem;
-    }
-
-    h1 {
+      padding: 0;
       text-align: center;
-      font-size: 2rem;
-      text-transform: lowercase;
     }
 
     nav {
-      text-align: center;
-      margin-bottom: 2rem;
+      width: 100%;
+      padding: 1rem 0 0.5rem;
     }
 
     nav a {
@@ -37,6 +32,19 @@
       text-decoration: underline;
     }
 
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-transform: lowercase;
+      margin-bottom: 2rem;
+    }
+
     .show-list {
       max-width: 600px;
       margin: 0 auto;
@@ -45,10 +53,6 @@
     .show {
       padding: 1rem;
       border-bottom: 1px solid #ddd;
-    }
-
-    .show:last-child {
-      border-bottom: none;
     }
 
     .date {
@@ -72,7 +76,6 @@
     }
 
     .home-link {
-      text-align: center;
       margin-top: 3rem;
     }
 
@@ -84,8 +87,6 @@
   </style>
 </head>
 <body>
-  <h1>live shows</h1>
-
   <nav>
     <a href="music.html">music</a>
     <a href="contact.html">contact</a>
@@ -93,21 +94,15 @@
     <a href="about.html">about</a>
   </nav>
 
+  <div class="divider"></div>
+
+  <h1>live shows</h1>
+
   <div class="show-list">
     <div class="show">
       <div class="date">July 12, 2025 – 2:15 PM</div>
       <div class="location">Maplewoodstock<br>580 Valley St, Maplewood, NJ 07040</div>
       <div class="info"><a href="https://maplewoodstock.com/" target="_blank">Event Info</a></div>
-    </div>
-    <div class="show">
-      <div class="date">August 3, 2025 – 8:00 PM</div>
-      <div class="location">Los Angeles, CA – The Echo</div>
-      <div class="info"><a href="#">Event Info</a></div>
-    </div>
-    <div class="show">
-      <div class="date">September 18, 2025 – 7:30 PM</div>
-      <div class="location">Chicago, IL – Lincoln Hall</div>
-      <div class="info"><a href="#">Event Info</a></div>
     </div>
   </div>
 
