@@ -15,19 +15,15 @@
       height: 100%;
     }
 
-    .desktop {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: calc(100% - 32px);
-      position: relative;
-    }
-
     .icons {
       display: flex;
       flex-direction: column;
       padding: 12px;
       width: 90px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
     }
 
     .icon {
@@ -44,6 +40,14 @@
       height: 48px;
       display: block;
       margin: 0 auto 4px;
+    }
+
+    .desktop {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: calc(100% - 32px);
+      position: relative;
     }
 
     #app {
@@ -114,13 +118,13 @@
       }
 
       .icons {
-        position: absolute;
-        bottom: 32px;
-        width: 100%;
         flex-direction: row;
         justify-content: center;
+        width: 100%;
         padding: 0.5rem 0;
         gap: 2rem;
+        top: auto;
+        bottom: 32px;
         background: transparent;
       }
 
@@ -138,22 +142,22 @@
   </style>
 </head>
 <body>
-  <div class="desktop">
-    <div class="icons">
-      <div class="icon" id="live-icon">
-        <img src="assets/live.png" alt="Live" />
-        <span>Live</span>
-      </div>
-      <div class="icon" id="contact-icon">
-        <img src="assets/contact.png" alt="Contact" />
-        <span>Contact</span>
-      </div>
-      <div class="icon" id="about-icon">
-        <img src="assets/about.png" alt="About" />
-        <span>About</span>
-      </div>
+  <div class="icons">
+    <div class="icon" id="live-icon">
+      <img src="assets/live.png" alt="Live" />
+      <span>Live</span>
     </div>
+    <div class="icon" id="contact-icon">
+      <img src="assets/contact.png" alt="Contact" />
+      <span>Contact</span>
+    </div>
+    <div class="icon" id="about-icon">
+      <img src="assets/about.png" alt="About" />
+      <span>About</span>
+    </div>
+  </div>
 
+  <div class="desktop">
     <div id="app"></div>
   </div>
 
