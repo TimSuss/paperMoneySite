@@ -95,10 +95,6 @@
       margin-right: 6px;
     }
 
-    .start-button:hover {
-      background: #a0a0a0;
-    }
-
     .taskbar-clock {
       font-size: 13px;
       background: #e0e0e0;
@@ -112,13 +108,17 @@
       padding: 2px 8px;
       font-size: 13px;
       cursor: pointer;
+      display: none;
     }
 
     .taskbar-button:active {
       border: 2px inset #404040;
     }
 
-    /* Win98-style window */
+    .taskbar-button.visible {
+      display: inline-block;
+    }
+
     .win98-window {
       position: absolute;
       top: 120px;
@@ -188,7 +188,6 @@
       text-decoration: underline;
     }
 
-    /* MOBILE OVERRIDE */
     @media (max-width: 768px) {
       .desktop {
         flex-direction: column;
@@ -283,12 +282,24 @@
           </tr>
           <tr>
             <td>October<br>(date TBD)</td>
-            <td>Nashville, TN<br></td>
+            <td>Nashville, TN</td>
             <td>Check back later for details!</td>
-            <td><br></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="win98-window" id="aboutWindow">
+    <div class="win98-titlebar" id="aboutTitlebar">
+      About
+      <div class="win98-close" onclick="closeAboutWindow()">×</div>
+    </div>
+    <div class="win98-content" style="text-align: center;">
+      <img src="assets/halloween.png" alt="Halloween" style="max-width: 100%; height: auto; margin-bottom: 12px;" />
+      <div style="text-decoration: underline; font-weight: bold;">Established in 2006 &amp; 2024</div>
+      <div style="margin-top: 8px;">Debut EP released in August 2025.</div>
     </div>
   </div>
 
@@ -298,10 +309,9 @@
         <img src="assets/start-icon.png" alt="Start" />
         Start
       </div>
-      <div class="taskbar-button">Winamp</div>
-      <div class="taskbar-button" id="liveTaskbarBtn" onclick="toggleLiveWindow()" style="display: none;">
-        Live
-      </div>
+      <div class="taskbar-button visible">Winamp</div>
+      <div class="taskbar-button" id="liveTaskbarBtn" onclick="toggleLiveWindow()">Live</div>
+      <div class="taskbar-button" id="aboutTaskbarBtn" onclick="toggleAboutWindow()">About</div>
     </div>
     <div class="taskbar-clock" id="clock">11:30 AM</div>
   </div>
@@ -323,16 +333,30 @@
 
   <script>
     const liveWindow = document.getElementById("liveWindow");
+    const aboutWindow = document.getElementById("aboutWindow");
     const liveTaskbarBtn = document.getElementById("liveTaskbarBtn");
+    const aboutTaskbarBtn = document.getElementById("aboutTaskbarBtn");
 
     function closeLiveWindow() {
       liveWindow.style.display = "none";
-      liveTaskbarBtn.style.display = "none";
+      liveTaskbarBtn.classList.remove("visible");
     }
 
     function toggleLiveWindow() {
-      const isVisible = liveWindow.style.display === "flex";
-      liveWindow.style.display = isVisible ? "none" : "flex";
+      const showing = liveWindow.style.display === "flex";
+      liveWindow.style.display = showing ? "none" : "flex";
+      liveTaskbarBtn.classList.toggle("visible", !showing);
+    }
+
+    function closeAboutWindow() {
+      aboutWindow.style.display = "none";
+      aboutTaskbarBtn.classList.remove("visible");
+    }
+
+    function toggleAboutWindow() {
+      const showing = aboutWindow.style.display === "flex";
+      aboutWindow.style.display = showing ? "none" : "flex";
+      aboutTaskbarBtn.classList.toggle("visible", !showing);
     }
 
     function makeDraggable(el, handle) {
@@ -360,22 +384,25 @@
     }
 
     makeDraggable(liveWindow, document.getElementById("liveTitlebar"));
+    makeDraggable(aboutWindow, document.getElementById("aboutTitlebar"));
 
     function setupIconEvents() {
       const isMobile = window.innerWidth <= 768;
 
-      // About
-      const aboutIcon = document.getElementById("about-icon");
-      aboutIcon.onclick = () => window.location.href = "about.html";
-
-      // Live icon
       const liveIcon = document.getElementById("live-icon");
+      const aboutIcon = document.getElementById("about-icon");
+
       if (isMobile) {
-        liveIcon.onclick = () => window.location.href = "live.html";
+        liveIcon.onclick = () => location.href = "live.html";
+        aboutIcon.onclick = () => location.href = "about.html";
       } else {
         liveIcon.ondblclick = () => {
           liveWindow.style.display = "flex";
-          liveTaskbarBtn.style.display = "inline-block";
+          liveTaskbarBtn.classList.add("visible");
+        };
+        aboutIcon.ondblclick = () => {
+          aboutWindow.style.display = "flex";
+          aboutTaskbarBtn.classList.add("visible");
         };
       }
     }
