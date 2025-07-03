@@ -420,8 +420,7 @@
       const fakeYear = 1999;
       const options = { hour: "numeric", minute: "2-digit" };
       const timeStr = now.toLocaleTimeString(undefined, options);
-      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${fakeYear}`;
-      clock.textContent = `${timeStr} ${dateStr}`;
+      clock.textContent = timeStr;
     }
 
     setupIconEvents();
