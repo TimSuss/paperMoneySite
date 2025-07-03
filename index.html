@@ -1,83 +1,392 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
+  <title>paper money – music</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>paper money</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #ffffff;
-      font-family: sans-serif;
-      color: #222;
+      background: #008080;
+      font-family: "Tahoma", sans-serif;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    .icons {
       display: flex;
       flex-direction: column;
+      padding: 12px;
+      width: 90px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+
+    .icon {
+      margin: 14px 0;
+      color: white;
+      text-align: center;
+      cursor: default;
+      user-select: none;
+      font-size: 14px;
+    }
+
+    .icon img {
+      width: 48px;
+      height: 48px;
+      display: block;
+      margin: 0 auto 4px;
+    }
+
+    .desktop {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: calc(100% - 32px);
+      position: relative;
+    }
+
+    #app {
+      position: absolute;
+      left: 35%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .taskbar {
+      height: 32px;
+      background: #c0c0c0;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #404040;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .start-button {
+      background: #c0c0c0;
+      border: 2px outset #fff;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 2px 10px;
+      cursor: pointer;
+      display: flex;
       align-items: center;
     }
 
-    nav {
-      width: 100%;
-      text-align: center;
-      padding: 1rem 0 0.5rem;
+    .start-button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
     }
 
-    nav a {
-      margin: 0 1.5rem;
-      text-decoration: none;
+    .start-button:hover {
+      background: #a0a0a0;
+    }
+
+    .taskbar-clock {
+      font-size: 13px;
+      background: #e0e0e0;
+      border: 2px inset #888;
+      padding: 2px 8px;
+    }
+
+    /* Win98-style window */
+    .win98-window {
+      position: absolute;
+      top: 120px;
+      left: 160px;
+      width: 600px;
+      background: #c0c0c0;
+      border: 3px outset #fff;
+      box-shadow: 4px 4px 0 #404040;
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      font-family: serif;
+    }
+
+    .win98-titlebar {
+      background: #000080;
+      color: white;
+      padding: 4px 8px;
       font-weight: bold;
-      color: #4b5c2b;
-      text-transform: lowercase;
-      font-size: 1.75rem;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    nav a:hover {
+    .win98-close {
+      background: #c0c0c0;
+      border: 2px outset #fff;
+      width: 18px;
+      height: 18px;
+      font-size: 14px;
+      line-height: 14px;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .win98-content {
+      padding: 8px;
+      max-height: 400px;
+      overflow: auto;
+    }
+
+    table.tour-dates {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 5px;
+      font-family: serif;
+      border: 3px outset gray;
+    }
+
+    .tour-dates th {
+      background-color: #4b5c2b;
+      color: white;
+      padding: 5px;
+      border: 2px inset black;
+    }
+
+    .tour-dates td {
+      padding: 5px;
+      border: 2px inset gray;
+      vertical-align: top;
+    }
+
+    .tour-dates a {
+      color: inherit;
       text-decoration: underline;
     }
 
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: #ccc;
-      margin-bottom: 1rem;
-    }
+    /* MOBILE OVERRIDE */
+    @media (max-width: 768px) {
+      .desktop {
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        height: auto;
+        padding-bottom: 100px;
+      }
 
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem 0 2rem;
-      width: 100%;
-    }
+      #app {
+        position: static;
+        transform: none;
+        margin-top: 2rem;
+      }
 
-    .footer {
-      font-family: 'Brush Script MT', cursive, serif;
-      font-size: 1.25rem;
-      color: #777;
-      margin-bottom: 0.75rem;
-    }
+      .icons {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        padding: 0.5rem 0;
+        gap: 2rem;
+        top: auto;
+        bottom: 32px;
+        background: transparent;
+      }
 
-    .logo-container img {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      display: block;
+      .icon {
+        margin: 0;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .icon img {
+        width: 40px;
+        height: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="music.html">music</a>
-    <a href="contact.html">contact</a>
-    <a href="live.html">live</a>
-    <a href="about.html">about</a>
-  </nav>
-
-  <div class="divider"></div>
-
-  <div class="logo-container">
-    <div class="footer">Est. 2006 &amp; 2024</div>
-    <img src="assets/logo.png" alt="paper money logo" />
+  <div class="icons">
+    <div class="icon" id="live-icon">
+      <img src="assets/live.png" alt="Live" />
+      <span>Live</span>
+    </div>
+    <div class="icon" id="contact-icon">
+      <img src="assets/contact.png" alt="Contact" />
+      <span>Contact</span>
+    </div>
+    <div class="icon" id="about-icon">
+      <img src="assets/about.png" alt="About" />
+      <span>About</span>
+    </div>
   </div>
+
+  <div class="desktop">
+    <div id="app"></div>
+  </div>
+
+  <!-- Win98-style Live Tour Window -->
+  <div class="win98-window" id="liveWindow">
+    <div class="win98-titlebar" id="liveTitlebar">
+      Live Shows
+      <div class="win98-close" onclick="closeLiveWindow()">×</div>
+    </div>
+    <div class="win98-content">
+      <table class="tour-dates">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Venue/Event</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>July 28</td>
+            <td>Ventura, CA<br>123 Main St, Ventura, CA 93001</td>
+            <td>Ventura Concert Theatre</td>
+            <td>with the Atari's<br>7:30pm - $12.50</td>
+          </tr>
+          <tr>
+            <td>July 29</td>
+            <td>Ventura, CA<br>123 Main St, Ventura, CA 93001</td>
+            <td>Ventura Concert Theatre</td>
+            <td>with the Atari's<br>7:30pm - $12.50</td>
+          </tr>
+          <tr>
+            <td>July 30</td>
+            <td>Anchorage, AK<br>456 Elm Ave, Anchorage, AK 99501</td>
+            <td>Egan Civic Center</td>
+            <td>7pm - $18.50</td>
+          </tr>
+          <tr>
+            <td>July 31</td>
+            <td><i>Big Stink '98</i><br>Estacada, OR<br>789 Oak Rd, Estacada, OR 97023</td>
+            <td>Timberbowl</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="taskbar">
+    <div class="start-button" onclick="location.href='index.html'">
+      <img src="assets/start-icon.png" alt="Start" />
+      Start
+    </div>
+    <div class="taskbar-clock" id="clock">11:30 AM</div>
+  </div>
+
+  <script type="module">
+    import Webamp from "https://unpkg.com/webamp@^2";
+
+    const webamp = new Webamp({
+      initialTracks: [
+        {
+          metaData: { artist: "paper money", title: "Gold Coast Soul" },
+          url: "assets/Gold Coast Soul.wav"
+        },
+        {
+          metaData: { artist: "paper money", title: "How Do You Do It?" },
+          url: "assets/How Do You Do It.wav"
+        },
+        {
+          metaData: { artist: "paper money", title: "POSTY" },
+          url: "assets/Posty.wav"
+        },
+        {
+          metaData: { artist: "paper money", title: "Pleasant Valley Way (BtB & FtK)" },
+          url: "assets/Pleasant Valley Way.wav"
+        }
+      ]
+    });
+
+    webamp.renderWhenReady(document.getElementById("app"));
+  </script>
+
+  <script>
+    function openPage(url) {
+      window.location.href = url;
+    }
+
+    function closeLiveWindow() {
+      document.getElementById("liveWindow").style.display = "none";
+    }
+
+    function makeDraggable(el, handle) {
+      let offsetX = 0, offsetY = 0, isDragging = false;
+
+      handle.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - el.offsetLeft;
+        offsetY = e.clientY - el.offsetTop;
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("mouseup", stopDrag);
+      });
+
+      function drag(e) {
+        if (!isDragging) return;
+        el.style.left = `${e.clientX - offsetX}px`;
+        el.style.top = `${e.clientY - offsetY}px`;
+      }
+
+      function stopDrag() {
+        isDragging = false;
+        document.removeEventListener("mousemove", drag);
+        document.removeEventListener("mouseup", stopDrag);
+      }
+    }
+
+    makeDraggable(document.getElementById("liveWindow"), document.getElementById("liveTitlebar"));
+
+    function setupIconEvents() {
+      const isMobile = window.innerWidth <= 768;
+
+      // Contact and About
+      const icons = [
+        { id: "contact-icon", url: "contact.html" },
+        { id: "about-icon", url: "about.html" }
+      ];
+
+      icons.forEach(({ id, url }) => {
+        const icon = document.getElementById(id);
+        if (!icon) return;
+        icon.onclick = () => openPage(url);
+      });
+
+      // Live icon behavior
+      const liveIcon = document.getElementById("live-icon");
+      if (isMobile) {
+        liveIcon.onclick = () => openPage("live.html");
+      } else {
+        liveIcon.ondblclick = () => {
+          document.getElementById("liveWindow").style.display = "flex";
+        };
+      }
+    }
+
+    function updateClock() {
+      const clock = document.getElementById("clock");
+      const now = new Date();
+      const fakeYear = 1999;
+      const options = { hour: "numeric", minute: "2-digit" };
+      const timeStr = now.toLocaleTimeString(undefined, options);
+      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${fakeYear}`;
+      clock.textContent = `${timeStr} ${dateStr}`;
+    }
+
+    setupIconEvents();
+    updateClock();
+    setInterval(updateClock, 1000);
+    window.addEventListener("resize", setupIconEvents);
+  </script>
 </body>
 </html>
