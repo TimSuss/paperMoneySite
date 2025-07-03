@@ -30,7 +30,7 @@
       margin: 14px 0;
       color: white;
       text-align: center;
-      cursor: default;
+      cursor: pointer;
       user-select: none;
       font-size: 14px;
     }
@@ -73,6 +73,11 @@
       box-sizing: border-box;
     }
 
+    .taskbar-left {
+      display: flex;
+      gap: 4px;
+    }
+
     .start-button {
       background: #c0c0c0;
       border: 2px outset #fff;
@@ -99,6 +104,18 @@
       background: #e0e0e0;
       border: 2px inset #888;
       padding: 2px 8px;
+    }
+
+    .taskbar-button {
+      background: #e0e0e0;
+      border: 2px outset #fff;
+      padding: 2px 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .taskbar-button:active {
+      border: 2px inset #404040;
     }
 
     /* Win98-style window */
@@ -201,7 +218,6 @@
       .icon {
         margin: 0;
         font-size: 13px;
-        cursor: pointer;
       }
 
       .icon img {
@@ -217,9 +233,21 @@
       <img src="assets/live.png" alt="Live" />
       <span>Live</span>
     </div>
-    <div class="icon" id="contact-icon">
-      <img src="assets/contact.png" alt="Contact" />
-      <span>Contact</span>
+    <div class="icon" onclick="window.open('https://www.instagram.com/papermoneymusic/', '_blank')">
+      <img src="assets/icon_instagram.png" alt="Instagram" />
+      <span>Instagram</span>
+    </div>
+    <div class="icon" onclick="window.open('https://open.spotify.com/artist/2PlVzkGdzib3vifMtIwvnF?si=nTA4fplRSim92nMpYEd3Tw', '_blank')">
+      <img src="assets/icon_spotify.png" alt="Spotify" style="border-radius: 16px; width: 50px; height: 50px; image-rendering: pixelated;" />
+      <span>Spotify</span>
+    </div>
+    <div class="icon" onclick="window.open('https://www.youtube.com/@PaperMoneyMusic', '_blank')">
+      <img src="assets/icon_youtube.png" alt="YouTube" />
+      <span>YouTube</span>
+    </div>
+    <div class="icon" onclick="window.open('https://www.tiktok.com/@papermoneymusic', '_blank')">
+      <img src="assets/icon_tiktok.png" alt="TikTok" />
+      <span>TikTok</span>
     </div>
     <div class="icon" id="about-icon">
       <img src="assets/about.png" alt="About" />
@@ -231,7 +259,6 @@
     <div id="app"></div>
   </div>
 
-  <!-- Win98-style Live Tour Window -->
   <div class="win98-window" id="liveWindow">
     <div class="win98-titlebar" id="liveTitlebar">
       Live Shows
@@ -249,28 +276,16 @@
         </thead>
         <tbody>
           <tr>
-            <td>July 28</td>
-            <td>Ventura, CA<br>123 Main St, Ventura, CA 93001</td>
-            <td>Ventura Concert Theatre</td>
-            <td>with the Atari's<br>7:30pm - $12.50</td>
+            <td>July 12</td>
+            <td>580 Valley St. <br> Maplewood, NJ 07040</td>
+            <td>Maplewoodstock<br>(set time: 2:15)</td>
+            <td><a href="https://maplewoodstock.com/" target="_blank">Click for Event Info</a></td>
           </tr>
           <tr>
-            <td>July 29</td>
-            <td>Ventura, CA<br>123 Main St, Ventura, CA 93001</td>
-            <td>Ventura Concert Theatre</td>
-            <td>with the Atari's<br>7:30pm - $12.50</td>
-          </tr>
-          <tr>
-            <td>July 30</td>
-            <td>Anchorage, AK<br>456 Elm Ave, Anchorage, AK 99501</td>
-            <td>Egan Civic Center</td>
-            <td>7pm - $18.50</td>
-          </tr>
-          <tr>
-            <td>July 31</td>
-            <td><i>Big Stink '98</i><br>Estacada, OR<br>789 Oak Rd, Estacada, OR 97023</td>
-            <td>Timberbowl</td>
-            <td></td>
+            <td>October<br>(date TBD)</td>
+            <td>Nashville, TN<br></td>
+            <td>Check back later for details!</td>
+            <td><br></td>
           </tr>
         </tbody>
       </table>
@@ -278,9 +293,15 @@
   </div>
 
   <div class="taskbar">
-    <div class="start-button" onclick="location.href='index.html'">
-      <img src="assets/start-icon.png" alt="Start" />
-      Start
+    <div class="taskbar-left">
+      <div class="start-button" onclick="location.href='index.html'">
+        <img src="assets/start-icon.png" alt="Start" />
+        Start
+      </div>
+      <div class="taskbar-button">Winamp</div>
+      <div class="taskbar-button" id="liveTaskbarBtn" onclick="toggleLiveWindow()" style="display: none;">
+        Live
+      </div>
     </div>
     <div class="taskbar-clock" id="clock">11:30 AM</div>
   </div>
@@ -290,22 +311,10 @@
 
     const webamp = new Webamp({
       initialTracks: [
-        {
-          metaData: { artist: "paper money", title: "Gold Coast Soul" },
-          url: "assets/Gold Coast Soul.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "How Do You Do It?" },
-          url: "assets/How Do You Do It.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "POSTY" },
-          url: "assets/Posty.wav"
-        },
-        {
-          metaData: { artist: "paper money", title: "Pleasant Valley Way (BtB & FtK)" },
-          url: "assets/Pleasant Valley Way.wav"
-        }
+        { metaData: { artist: "paper money", title: "Gold Coast Soul" }, url: "assets/Gold Coast Soul.wav" },
+        { metaData: { artist: "paper money", title: "How Do You Do It?" }, url: "assets/How Do You Do It.wav" },
+        { metaData: { artist: "paper money", title: "POSTY" }, url: "assets/Posty.wav" },
+        { metaData: { artist: "paper money", title: "Pleasant Valley Way (BtB & FtK)" }, url: "assets/Pleasant Valley Way.wav" }
       ]
     });
 
@@ -313,12 +322,17 @@
   </script>
 
   <script>
-    function openPage(url) {
-      window.location.href = url;
-    }
+    const liveWindow = document.getElementById("liveWindow");
+    const liveTaskbarBtn = document.getElementById("liveTaskbarBtn");
 
     function closeLiveWindow() {
-      document.getElementById("liveWindow").style.display = "none";
+      liveWindow.style.display = "none";
+      liveTaskbarBtn.style.display = "none";
+    }
+
+    function toggleLiveWindow() {
+      const isVisible = liveWindow.style.display === "flex";
+      liveWindow.style.display = isVisible ? "none" : "flex";
     }
 
     function makeDraggable(el, handle) {
@@ -345,30 +359,23 @@
       }
     }
 
-    makeDraggable(document.getElementById("liveWindow"), document.getElementById("liveTitlebar"));
+    makeDraggable(liveWindow, document.getElementById("liveTitlebar"));
 
     function setupIconEvents() {
       const isMobile = window.innerWidth <= 768;
 
-      // Contact and About
-      const icons = [
-        { id: "contact-icon", url: "contact.html" },
-        { id: "about-icon", url: "about.html" }
-      ];
+      // About
+      const aboutIcon = document.getElementById("about-icon");
+      aboutIcon.onclick = () => window.location.href = "about.html";
 
-      icons.forEach(({ id, url }) => {
-        const icon = document.getElementById(id);
-        if (!icon) return;
-        icon.onclick = () => openPage(url);
-      });
-
-      // Live icon behavior
+      // Live icon
       const liveIcon = document.getElementById("live-icon");
       if (isMobile) {
-        liveIcon.onclick = () => openPage("live.html");
+        liveIcon.onclick = () => window.location.href = "live.html";
       } else {
         liveIcon.ondblclick = () => {
-          document.getElementById("liveWindow").style.display = "flex";
+          liveWindow.style.display = "flex";
+          liveTaskbarBtn.style.display = "inline-block";
         };
       }
     }
