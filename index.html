@@ -298,9 +298,9 @@
       <div class="win98-close" onclick="closeAboutWindow()">×</div>
     </div>
     <div class="win98-content" style="text-align: center;">
-      <img src="assets/halloween.png" alt="Halloween" style="max-width: 100%; height: auto; margin-bottom: 12px;" />
+      <img src="assets/warped.png" alt="Warped Tour" style="max-width: 100%; height: auto; margin-bottom: 12px;" />
       <div style="text-decoration: underline; font-weight: bold;">Established in 2006 &amp; 2024</div>
-      <div style="margin-top: 8px;">Debut EP released in August 2025.</div>
+      <div style="margin-top: 8px;">Debut EP to be released in August 2025.</div>
     </div>
   </div>
 
@@ -394,20 +394,14 @@
       const aboutIcon = document.getElementById("about-icon");
 
       if (isMobile) {
+        liveIcon.onclick = () => location.href = "live.html";
+        aboutIcon.onclick = () => location.href = "about.html";
+      } else {
         liveIcon.onclick = () => {
           liveWindow.style.display = "flex";
           liveTaskbarBtn.classList.add("visible");
         };
         aboutIcon.onclick = () => {
-          aboutWindow.style.display = "flex";
-          aboutTaskbarBtn.classList.add("visible");
-        };
-      } else {
-        liveIcon.ondblclick = () => {
-          liveWindow.style.display = "flex";
-          liveTaskbarBtn.classList.add("visible");
-        };
-        aboutIcon.ondblclick = () => {
           aboutWindow.style.display = "flex";
           aboutTaskbarBtn.classList.add("visible");
         };
@@ -417,10 +411,9 @@
     function updateClock() {
       const clock = document.getElementById("clock");
       const now = new Date();
-      const fakeYear = 1999;
       const options = { hour: "numeric", minute: "2-digit" };
       const timeStr = now.toLocaleTimeString(undefined, options);
-      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${fakeYear}`;
+      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
       clock.textContent = `${timeStr} ${dateStr}`;
     }
 
