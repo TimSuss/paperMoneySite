@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       background-color: #4285f4;
-      background-image: url("assets/wallpaper.png");
+      background-image: url("assets/images/wallpaper.png");
       background-repeat: no-repeat;
       background-position: center 2%;
       background-size: 70% auto;
@@ -239,27 +239,27 @@
 <body>
   <div class="icons">
     <div class="icon" id="live-icon">
-      <img src="assets/live.png" alt="Live" />
+      <img src="assets/icons/icon_live.png" alt="Live" />
       <span>Live</span>
     </div>
     <div class="icon" onclick="window.open('https://www.instagram.com/papermoneymusic', '_blank')">
-      <img src="assets/icon_instagram.png" alt="Instagram" />
+      <img src="assets/icons/icon_instagram.png" alt="Instagram" />
       <span>Instagram</span>
     </div>
     <div class="icon" onclick="window.open('https://open.spotify.com/artist/2PlVzkGdzib3vifMtIwvnF?si=nTA4fplRSim92nMpYEd3Tw', '_blank')">
-      <img src="assets/icon_spotify.png" alt="Spotify" style="border-radius: 16px; image-rendering: pixelated;" />
+      <img src="assets/icons/icon_spotify.png" alt="Spotify" style="border-radius: 16px; image-rendering: pixelated;" />
       <span>Spotify</span>
     </div>
     <div class="icon" onclick="window.open('https://www.youtube.com/@PaperMoneyMusic', '_blank')">
-      <img src="assets/icon_youtube.png" alt="YouTube" />
+      <img src="assets/icons/icon_youtube.png" alt="YouTube" />
       <span>YouTube</span>
     </div>
     <div class="icon" onclick="window.open('https://www.tiktok.com/@papermoneymusic', '_blank')">
-      <img src="assets/icon_tiktok.png" alt="TikTok" />
+      <img src="assets/icons/icon_tiktok.png" alt="TikTok" />
       <span>TikTok</span>
     </div>
     <div class="icon" id="about-icon">
-      <img src="assets/about.png" alt="About" />
+      <img src="assets/icons/icon_about.png" alt="About" />
       <span>About</span>
     </div>
   </div>
@@ -313,7 +313,7 @@
       <div class="win98-close" onclick="closeAboutWindow()">×</div>
     </div>
     <div class="win98-content" style="text-align: center;">
-      <img src="assets/warped.png" alt="Warped Tour" style="max-width: 100%; height: auto; margin-bottom: 12px;" />
+      <img src="assets/images/warped.png" alt="Warped Tour" style="max-width: 100%; height: auto; margin-bottom: 12px;" />
       <div style="text-decoration: underline; font-weight: bold;">Established in 2006 &amp; 2024</div>
       <div style="margin-top: 8px;">Debut EP to be released in August 2025.</div>
     </div>
@@ -322,7 +322,7 @@
   <div class="taskbar">
     <div class="taskbar-left">
       <div class="start-button" onclick="location.href='index.html'">
-        <img src="assets/start-icon.png" alt="Start" />
+        <img src="assets/icons/start-icon.png" alt="Start" />
         Start
       </div>
       <div class="taskbar-button visible">Winamp</div>
@@ -339,7 +339,7 @@
 
     const webamp = new Webamp({
     initialTracks: [
-        { metaData: { artist: "paper money", title: "POSTY" }, url: "assets/Posty.wav" }
+        { metaData: { artist: "paper money", title: "POSTY" }, url: "assets/audio/Posty.wav" }
       ]
     });
 
@@ -408,7 +408,7 @@
       const aboutIcon = document.getElementById("about-icon");
 
       if (isMobile) {
-        liveIcon.onclick = () => location.href = "live.html";
+        liveIcon.onclick = () => location.href = "icon_live.html";
         aboutIcon.onclick = () => location.href = "about.html";
       } else {
         liveIcon.onclick = () => {
@@ -438,3 +438,5 @@
   </script>
 </body>
 </html>
+
+
