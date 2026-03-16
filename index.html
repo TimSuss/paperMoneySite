@@ -21,13 +21,19 @@
 
     .icons {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      gap: 12px;
       padding: 12px;
-      width: 90px;
       position: absolute;
       top: 0;
       left: 0;
       z-index: 5;
+    }
+
+    .icon-column {
+      display: flex;
+      flex-direction: column;
+      width: 90px;
     }
 
     .icon {
@@ -195,7 +201,10 @@
     @media (max-width: 768px) {
       html, body {
         background-color: #4285f4;
-        background-image: none;
+        background-image: url("assets/images/bandPic.jpeg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
       }
 
       .desktop {
@@ -224,6 +233,11 @@
         background: transparent;
       }
 
+      .icon-column {
+        display: contents;
+        width: auto;
+      }
+
       .icon {
         margin: 0;
         font-size: 13px;
@@ -238,33 +252,37 @@
 </head>
 <body>
   <div class="icons">
-    <div class="icon" id="live-icon">
-      <img src="assets/icons/icon_live.png" alt="Live" />
-      <span>Live</span>
+    <div class="icon-column">
+      <div class="icon" id="live-icon">
+        <img src="assets/icons/icon_live.png" alt="Live" />
+        <span>Live</span>
+      </div>
+      <div class="icon" onclick="window.open('https://www.instagram.com/papermoneymusic', '_blank')">
+        <img src="assets/icons/icon_instagram.png" alt="Instagram" />
+        <span>Instagram</span>
+      </div>
+      <div class="icon" onclick="window.open('https://open.spotify.com/artist/2PlVzkGdzib3vifMtIwvnF?si=nTA4fplRSim92nMpYEd3Tw', '_blank')">
+        <img src="assets/icons/icon_spotify.png" alt="Spotify" style="border-radius: 16px; image-rendering: pixelated;" />
+        <span>Spotify</span>
+      </div>
+      <div class="icon" onclick="window.open('https://www.youtube.com/@PaperMoneyMusic', '_blank')">
+        <img src="assets/icons/icon_youtube.png" alt="YouTube" />
+        <span>YouTube</span>
+      </div>
+      <div class="icon" onclick="window.open('https://www.tiktok.com/@papermoneymusic', '_blank')">
+        <img src="assets/icons/icon_tiktok.png" alt="TikTok" />
+        <span>TikTok</span>
+      </div>
+      <div class="icon" id="about-icon">
+        <img src="assets/icons/icon_about.png" alt="About" />
+        <span>About</span>
+      </div>
     </div>
-    <div class="icon" onclick="window.open('https://www.instagram.com/papermoneymusic', '_blank')">
-      <img src="assets/icons/icon_instagram.png" alt="Instagram" />
-      <span>Instagram</span>
-    </div>
-    <div class="icon" onclick="window.open('https://open.spotify.com/artist/2PlVzkGdzib3vifMtIwvnF?si=nTA4fplRSim92nMpYEd3Tw', '_blank')">
-      <img src="assets/icons/icon_spotify.png" alt="Spotify" style="border-radius: 16px; image-rendering: pixelated;" />
-      <span>Spotify</span>
-    </div>
-    <div class="icon" onclick="window.open('https://www.youtube.com/@PaperMoneyMusic', '_blank')">
-      <img src="assets/icons/icon_youtube.png" alt="YouTube" />
-      <span>YouTube</span>
-    </div>
-    <div class="icon" onclick="window.open('https://www.tiktok.com/@papermoneymusic', '_blank')">
-      <img src="assets/icons/icon_tiktok.png" alt="TikTok" />
-      <span>TikTok</span>
-    </div>
-    <div class="icon" id="about-icon">
-      <img src="assets/icons/icon_about.png" alt="About" />
-      <span>About</span>
-    </div>
-    <div class="icon" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSc3RbTccvIn4Jfn4RtT_jie02b-1M-xhNLaE5NnTXWccqQscA/viewform?usp=preview', '_blank')">
-      <img src="assets/icons/icon_contact.png" alt="Connect" />
-      <span>Connect</span>
+    <div class="icon-column">
+      <div class="icon" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSc3RbTccvIn4Jfn4RtT_jie02b-1M-xhNLaE5NnTXWccqQscA/viewform?usp=preview', '_blank')">
+        <img src="assets/icons/icon_contact.png" alt="Connect" />
+        <span>Connect</span>
+      </div>
     </div>
   </div>
 
