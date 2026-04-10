@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>repost</title>
+  <style>
+    :root {
+      --sky: #9bc4ff;
+      --sky-deep: #4c7dd6;
+      --cream: #fff7df;
+      --pink: #f7bfd5;
+      --peach: #ffd8a8;
+      --mint: #cdeec8;
+      --ink: #2c2450;
+      --frame: #f9fbff;
+      --shadow: #264473;
+      --window: #f2f0e8;
+      --button-face: #d8d5cb;
+      --button-edge-light: #ffffff;
+      --button-edge-dark: #7a7680;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Tahoma", "Verdana", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 28%),
+        linear-gradient(180deg, var(--sky) 0%, var(--sky-deep) 100%);
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.12) 50%, transparent 50%);
+      background-size: 100% 4px;
+      opacity: 0.18;
+    }
+
+    body::after {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 230, 174, 0.95) 0 44px, transparent 45px),
+        radial-gradient(circle at 84% 14%, rgba(255, 198, 221, 0.7) 0 28px, transparent 29px),
+        radial-gradient(circle at 88% 80%, rgba(205, 238, 200, 0.7) 0 36px, transparent 37px),
+        radial-gradient(circle at 18% 84%, rgba(255, 216, 168, 0.65) 0 30px, transparent 31px);
+      opacity: 0.9;
+    }
+
+    .window {
+      position: relative;
+      width: min(100%, 640px);
+      background: var(--window);
+      border: 3px solid var(--button-edge-light);
+      border-right-color: var(--button-edge-dark);
+      border-bottom-color: var(--button-edge-dark);
+      box-shadow: 10px 10px 0 rgba(38, 68, 115, 0.32);
+      animation: pop-in 280ms ease-out;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      color: #fff;
+      background: linear-gradient(90deg, #275dc1 0%, #4e84dc 55%, #87b1f5 100%);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+    }
+
+    .titlebar-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .titlebar-buttons {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .titlebar-button {
+      width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--button-face);
+      border: 2px solid var(--button-edge-light);
+      border-right-color: var(--button-edge-dark);
+      border-bottom-color: var(--button-edge-dark);
+      color: #111;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .content {
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.45)),
+        url("assets/images/wallpaper.png") center bottom / 140% auto no-repeat;
+    }
+
+    .intro {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      background: rgba(255, 247, 223, 0.92);
+      border: 2px solid #fff;
+      border-right-color: #b3ac9e;
+      border-bottom-color: #b3ac9e;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      width: fit-content;
+      padding: 3px 8px;
+      background: var(--pink);
+      border: 1px solid rgba(44, 36, 80, 0.22);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 0.95;
+    }
+
+    .intro p {
+      margin: 0;
+      max-width: 42ch;
+      font-size: 16px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .link-card {
+      position: relative;
+      display: grid;
+      gap: 10px;
+      min-height: 210px;
+      padding: 18px;
+      text-decoration: none;
+      color: inherit;
+      border: 3px solid #fff;
+      border-right-color: var(--button-edge-dark);
+      border-bottom-color: var(--button-edge-dark);
+      box-shadow: inset 0 0 0 1px rgba(44, 36, 80, 0.08);
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .link-card:hover,
+    .link-card:focus-visible {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 rgba(44, 36, 80, 0.18);
+      outline: none;
+    }
+
+    .link-card.one {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.3)), var(--peach);
+    }
+
+    .link-card.two {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.3)), var(--mint);
+    }
+
+    .sticker {
+      width: fit-content;
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px dashed rgba(44, 36, 80, 0.35);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .link-card h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .link-card p {
+      margin: 0;
+      font-size: 15px;
+      max-width: 22ch;
+    }
+
+    .cta {
+      align-self: end;
+      justify-self: start;
+      padding: 8px 12px;
+      background: var(--button-face);
+      border: 2px solid var(--button-edge-light);
+      border-right-color: var(--button-edge-dark);
+      border-bottom-color: var(--button-edge-dark);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      font-size: 12px;
+      text-align: center;
+      color: rgba(44, 36, 80, 0.78);
+    }
+
+    @keyframes pop-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+
+      .content {
+        padding: 14px;
+        background-size: 220% auto;
+      }
+
+      .intro {
+        padding: 14px;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .link-card {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="window">
+    <div class="titlebar">
+      <div class="titlebar-text">repost</div>
+      <div class="titlebar-buttons" aria-hidden="true">
+        <div class="titlebar-button">_</div>
+        <div class="titlebar-button">[]</div>
+        <div class="titlebar-button">X</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <section class="intro">
+        <span class="eyebrow">pick one</span>
+        <h1>Click one of these links for a social media post from Paper Money.</h1>
+        <p>We would appreciate it so much if you could repost it. :-)  <3 143 ily</p>
+      </section>
+
+      <section class="links-grid" aria-label="Link choices">
+        <a class="link-card one" href="https://youtu.be/O90Oa7VbhGo?si=h9DbLG9kZggxsAjn" data-link="one">
+          <span class="sticker">option 01</span>
+          <h2>YouTube</h2>
+          <p>Open the Paper Money YouTube post and share it from there.</p>
+          <span class="cta">open</span>
+        </a>
+
+        <a class="link-card two" href="https://www.instagram.com/reel/DW8v4ihEez4/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" data-link="two">
+          <span class="sticker">option 02</span>
+          <h2>Instagram</h2>
+          <p>Open the Paper Money Instagram post and repost it there.</p>
+          <span class="cta">open</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
