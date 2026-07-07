@@ -45,40 +45,49 @@
     a {
       color: #000080;
     }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+      }
+
+      table {
+        min-width: 560px;
+      }
+    }
   </style>
 </head>
 <body>
   <a href="index.html" class="back-link">&larr; back</a>
-  <table class="tour-dates">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Venue/Event</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>July 12</td>
-        <td>580 Valley St. <br> Maplewood, NJ 07040</td>
-        <td>Maplewoodstock<br>(set time: 2:15)</td>
-        <td><a href="https://maplewoodstock.com/" target="_blank">Click for Event Info</a></td>
-      </tr>
-      <tr>
-        <td>August 22**</td>
-        <td>Morristown, NJ 07040</td>
-        <td>EP Release Party</td>
-        <td>**Date and exact location TBD<br>Check back later for details!</td>
-      </tr>
-      <tr>
-        <td>October<br>(date TBD)</td>
-        <td>Nashville, TN</td>
-        <td>TBD</td>
-        <td>Check back later for details!</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table class="tour-dates">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Venue/Event</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>June 18</td>
+          <td>Peabody Hotel</td>
+          <td>Summer Concert Series</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>July 11</td>
+          <td>Whippany, NJ</td>
+          <td>Alpha Wave Studios</td>
+          <td><a href="https://www.eventbrite.com/e/paper-money-tickets-1992136349448" target="_blank" rel="noopener">Tickets</a><br>Doors at 7:30</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
