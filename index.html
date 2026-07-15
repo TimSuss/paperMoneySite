@@ -233,7 +233,7 @@
     .concert-popup-message {
       display: flex;
       gap: 12px;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 18px;
     }
 
@@ -253,16 +253,10 @@
 
     .concert-popup-copy {
       margin: 0;
-      font-size: 24px;
+      flex: 1;
+      font-size: 18px;
       line-height: 1.35;
-    }
-
-    #concertCountdown {
-      font-weight: bold;
-    }
-
-    .timer-number {
-      color: #c00000;
+      text-align: center;
     }
 
     .concert-popup-actions {
@@ -355,10 +349,6 @@
         gap: 10px;
       }
 
-      #concertCountdown {
-        font-size: 18px;
-      }
-
       .concert-popup-copy {
         font-size: 18px;
       }
@@ -417,19 +407,18 @@
   <div class="concert-popup" id="concertPopup" role="dialog" aria-modal="true" aria-labelledby="concertPopupTitle">
     <div class="win98-titlebar">
       <span id="concertPopupTitle">Important!</span>
-      <button class="win98-close" type="button" aria-label="Close Whippany concert popup" onclick="closeConcertPopup()">×</button>
+      <button class="win98-close" type="button" aria-label="Close new single popup" onclick="closeConcertPopup()">×</button>
     </div>
     <div class="concert-popup-content">
       <div class="concert-popup-message">
         <div class="concert-popup-icon" aria-hidden="true">!</div>
         <p class="concert-popup-copy">
-          <span id="concertCountdown">Loading...</span>
-          until the Whippany concert
+          The new single, "Out the Door", is coming soon! Presave now.
         </p>
       </div>
       <div class="concert-popup-actions">
         <button class="win98-action" type="button" onclick="closeConcertPopup()">Cancel</button>
-        <a class="win98-action tickets-action" href="https://www.eventbrite.com/e/paper-money-tickets-1992136349448" target="_blank" rel="noopener">Get Tickets!</a>
+        <a class="win98-action tickets-action" href="https://vyd.co/PaperMoneyOutTheDoor" target="_blank" rel="noopener">Presave</a>
       </div>
     </div>
   </div>
@@ -514,35 +503,11 @@
     const liveWindow = document.getElementById("liveWindow");
     const aboutWindow = document.getElementById("aboutWindow");
     const concertPopup = document.getElementById("concertPopup");
-    const concertCountdown = document.getElementById("concertCountdown");
     const liveTaskbarBtn = document.getElementById("liveTaskbarBtn");
     const aboutTaskbarBtn = document.getElementById("aboutTaskbarBtn");
-    const whippanyConcertTime = new Date("2026-07-11T19:30:00-04:00").getTime();
 
     function closeConcertPopup() {
       concertPopup.hidden = true;
-    }
-
-    function updateConcertCountdown() {
-      const remaining = whippanyConcertTime - Date.now();
-
-      if (remaining <= 0) {
-        concertCountdown.textContent = "It's concert time";
-        return;
-      }
-
-      const totalSeconds = Math.floor(remaining / 1000);
-      const days = Math.floor(totalSeconds / 86400);
-      const hours = Math.floor((totalSeconds % 86400) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      const dayLabel = days === 1 ? "day" : "days";
-      const hourLabel = hours === 1 ? "hour" : "hours";
-      const minuteLabel = minutes === 1 ? "minute" : "minutes";
-      const secondLabel = seconds === 1 ? "second" : "seconds";
-
-      concertCountdown.innerHTML = `<span class="timer-number">${days}</span> ${dayLabel}, <span class="timer-number">${hours}</span> ${hourLabel}, <span class="timer-number">${minutes}</span> ${minuteLabel}, <span class="timer-number">${seconds}</span> ${secondLabel}`;
     }
 
     function closeLiveWindow() {
@@ -626,9 +591,7 @@
 
     setupIconEvents();
     updateClock();
-    updateConcertCountdown();
     setInterval(updateClock, 1000);
-    setInterval(updateConcertCountdown, 1000);
     window.addEventListener("resize", setupIconEvents);
   </script>
 </body>
