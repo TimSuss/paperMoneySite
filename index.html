@@ -404,21 +404,20 @@
     <div id="app"></div>
   </div>
 
-  <div class="concert-popup" id="concertPopup" role="dialog" aria-modal="true" aria-labelledby="concertPopupTitle">
+  <div class="concert-popup" id="sitePopup" role="dialog" aria-modal="true" aria-labelledby="sitePopupTitle" hidden>
     <div class="win98-titlebar">
-      <span id="concertPopupTitle">Important!</span>
-      <button class="win98-close" type="button" aria-label="Close new single popup" onclick="closeConcertPopup()">×</button>
+      <span id="sitePopupTitle">Important!</span>
+      <button class="win98-close" type="button" aria-label="Close popup" onclick="closeSitePopup()">×</button>
     </div>
     <div class="concert-popup-content">
       <div class="concert-popup-message">
         <div class="concert-popup-icon" aria-hidden="true">!</div>
         <p class="concert-popup-copy">
-          The new single, "Out the Door", is coming soon! Presave now.
+          Add future popup copy here.
         </p>
       </div>
       <div class="concert-popup-actions">
-        <button class="win98-action" type="button" onclick="closeConcertPopup()">Cancel</button>
-        <a class="win98-action tickets-action" href="https://vyd.co/PaperMoneyOutTheDoor" target="_blank" rel="noopener">Presave</a>
+        <button class="win98-action" type="button" onclick="closeSitePopup()">OK</button>
       </div>
     </div>
   </div>
@@ -491,6 +490,7 @@
 
     const webamp = new Webamp({
     initialTracks: [
+        { metaData: { artist: "Paper Money", title: "Out the Door" }, url: "assets/audio/Out The Door .mp3" },
         { metaData: { artist: "Paper Money", title: "Pretty Faces" }, url: "assets/audio/Pretty Faces.mp3" },
         { metaData: { artist: "Paper Money", title: "Posty" }, url: "assets/audio/Posty.wav" }
       ]
@@ -502,12 +502,16 @@
   <script>
     const liveWindow = document.getElementById("liveWindow");
     const aboutWindow = document.getElementById("aboutWindow");
-    const concertPopup = document.getElementById("concertPopup");
+    const sitePopup = document.getElementById("sitePopup");
     const liveTaskbarBtn = document.getElementById("liveTaskbarBtn");
     const aboutTaskbarBtn = document.getElementById("aboutTaskbarBtn");
 
-    function closeConcertPopup() {
-      concertPopup.hidden = true;
+    function openSitePopup() {
+      sitePopup.hidden = false;
+    }
+
+    function closeSitePopup() {
+      sitePopup.hidden = true;
     }
 
     function closeLiveWindow() {
