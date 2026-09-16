@@ -13,10 +13,6 @@
       --dark: #404040;
       --black: #000000;
       --blue: #000080;
-      --link: #0000ee;
-      --yellow: #ffff66;
-      --cyan: #00f2ea;
-      --pink: #ff0050;
     }
 
     * {
@@ -208,153 +204,12 @@
       font-family: "Courier New", Courier, monospace;
     }
 
-    .pixel-icon {
-      position: relative;
+    .asset-icon {
       flex: 0 0 auto;
-      width: 40px;
-      height: 40px;
-      border: 2px solid var(--black);
-      background: var(--light);
-      image-rendering: pixelated;
-    }
-
-    .button-link .pixel-icon {
       width: 32px;
       height: 32px;
-    }
-
-    .icon-email {
-      background:
-        linear-gradient(45deg, transparent 44%, var(--blue) 45% 54%, transparent 55%),
-        linear-gradient(-45deg, transparent 44%, var(--blue) 45% 54%, transparent 55%),
-        linear-gradient(var(--light) 0 0) center / 26px 18px no-repeat,
-        var(--yellow);
-    }
-
-    .icon-email::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 10px;
-      width: 24px;
-      height: 16px;
-      border: 3px solid var(--blue);
-      background: transparent;
-    }
-
-    .icon-spotify {
-      background: #1db954;
-      box-shadow: inset 0 0 0 4px #0b7f38;
-      border-color: #053d1c;
-    }
-
-    .icon-spotify::before,
-    .icon-spotify::after {
-      content: "";
-      position: absolute;
-      left: 9px;
-      border-top: 4px solid var(--black);
-      border-radius: 50%;
-      transform: rotate(9deg);
-    }
-
-    .icon-spotify::before {
-      top: 12px;
-      width: 22px;
-      height: 13px;
-      box-shadow: 0 7px 0 -1px var(--black);
-    }
-
-    .icon-spotify::after {
-      top: 26px;
-      width: 15px;
-      height: 7px;
-    }
-
-    .icon-apple {
-      background:
-        linear-gradient(135deg, #fa243c 0 20%, #fb5c74 20% 40%, #9b5cff 40% 62%, #24a0ff 62% 82%, #38d878 82% 100%);
-      border-color: #5a1648;
-    }
-
-    .icon-apple::before {
-      content: "";
-      position: absolute;
-      left: 11px;
-      top: 8px;
-      width: 12px;
-      height: 20px;
-      border-left: 5px solid var(--light);
-      border-bottom: 5px solid var(--light);
-    }
-
-    .icon-apple::after {
-      content: "";
-      position: absolute;
-      right: 8px;
-      bottom: 8px;
-      width: 9px;
-      height: 9px;
-      background: var(--light);
-      box-shadow: -15px 0 0 var(--light);
-    }
-
-    .icon-instagram {
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(135deg, #f9ce34, #ee2a7b 48%, #6228d7);
-      border-color: #43146b;
-    }
-
-    .icon-instagram::before {
-      content: "";
-      width: 21px;
-      height: 21px;
-      border: 4px solid var(--light);
-      box-shadow: 8px -8px 0 -5px var(--light);
-    }
-
-    .icon-instagram::after {
-      content: "";
-      position: absolute;
-      left: 15px;
-      top: 15px;
-      width: 8px;
-      height: 8px;
-      background: var(--light);
-    }
-
-    .icon-tiktok {
-      background: var(--black);
-      border-color: #111111;
-    }
-
-    .icon-tiktok::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 7px;
-      width: 7px;
-      height: 20px;
-      background: var(--light);
-      box-shadow:
-        -3px 2px 0 var(--cyan),
-        3px -2px 0 var(--pink);
-    }
-
-    .icon-tiktok::after {
-      content: "";
-      position: absolute;
-      left: 8px;
-      bottom: 7px;
-      width: 14px;
-      height: 14px;
-      background: var(--light);
-      box-shadow:
-        -3px 2px 0 var(--cyan),
-        3px -2px 0 var(--pink),
-        10px -21px 0 -3px var(--light);
+      object-fit: contain;
+      image-rendering: pixelated;
     }
 
     @media (min-width: 700px) {
@@ -378,7 +233,7 @@
   <main class="desktop">
     <section class="window" aria-labelledby="page-title">
       <div class="titlebar">
-        <div class="titlebar-text">C:\PAPER_MONEY\REPOST.EXE</div>
+        <div class="titlebar-text">C:\PAPER_MONEY\LINKS.EXE</div>
         <div class="titlebar-buttons" aria-hidden="true">
           <span class="titlebar-button">_</span>
           <span class="titlebar-button">[]</span>
@@ -395,7 +250,6 @@
         <div class="groups" aria-label="Paper Money link groups">
           <section class="group group-mail" aria-labelledby="mail-title">
             <div class="group-header">
-              <span class="pixel-icon icon-email" aria-hidden="true"></span>
               <div>
                 <h2 class="group-title" id="mail-title">Mailing List</h2>
                 <p class="group-subtitle">Get updates straight from the band.</p>
@@ -404,14 +258,13 @@
             <div class="link-list">
               <a class="button-link" href="https://docs.google.com/forms/d/e/1FAIpQLSc3RbTccvIn4Jfn4RtT_jie02b-1M-xhNLaE5NnTXWccqQscA/viewform?usp=preview" target="_blank" rel="noopener">
                 Join the mailing list
-                <span class="arrow" aria-hidden="true">-&gt;</span>
+                <img class="asset-icon" src="assets/icons/icon_contact.png" alt="" aria-hidden="true" />
               </a>
             </div>
           </section>
 
           <section class="group" aria-labelledby="stream-title">
             <div class="group-header">
-              <span class="pixel-icon icon-spotify" aria-hidden="true"></span>
               <div>
                 <h2 class="group-title" id="stream-title">Streaming</h2>
                 <p class="group-subtitle">Choose your player.</p>
@@ -420,18 +273,17 @@
             <div class="link-list">
               <a class="button-link" href="https://open.spotify.com/artist/2PlVzkGdzib3vifMtIwvnF?si=nTA4fplRSim92nMpYEd3Tw&amp;nd=1&amp;dlsi=6ff8ffce1a8a4764" target="_blank" rel="noopener">
                 <span>Spotify</span>
-                <span class="arrow" aria-hidden="true">-&gt;</span>
+                <img class="asset-icon" src="assets/icons/icon_spotify.png" alt="" aria-hidden="true" />
               </a>
               <a class="button-link" href="https://music.apple.com/us/artist/paper-money/1820416076" target="_blank" rel="noopener">
                 <span>Apple Music</span>
-                <span class="pixel-icon icon-apple" aria-hidden="true"></span>
+                <img class="asset-icon" src="assets/icons/icon_appleMusic.png" alt="" aria-hidden="true" />
               </a>
             </div>
           </section>
 
           <section class="group" aria-labelledby="social-title">
             <div class="group-header">
-              <span class="pixel-icon icon-instagram" aria-hidden="true"></span>
               <div>
                 <h2 class="group-title" id="social-title">Social Media</h2>
                 <p class="group-subtitle">Follow and repost from there.</p>
@@ -440,11 +292,11 @@
             <div class="link-list">
               <a class="button-link" href="https://www.instagram.com/papermoneymusic" target="_blank" rel="noopener">
                 Instagram
-                <span class="arrow" aria-hidden="true">-&gt;</span>
+                <img class="asset-icon" src="assets/icons/icon_instagram.png" alt="" aria-hidden="true" />
               </a>
               <a class="button-link" href="https://www.tiktok.com/@papermoneymusic" target="_blank" rel="noopener">
                 TikTok
-                <span class="pixel-icon icon-tiktok" aria-hidden="true"></span>
+                <img class="asset-icon" src="assets/icons/icon_tiktok.png" alt="" aria-hidden="true" />
               </a>
             </div>
           </section>
